@@ -5,9 +5,9 @@
   "description": "Estimate calories and macros for a meal as ranges, look up dishes in ChopCal's food table, read your ChopCal food diary, and save a meal to it after you confirm.",
   "author": {
     "name": "ChopCal",
-    "url": "https://chopcal.com"
+    "url": "https://chopcal.com/?utm_source=github-chopcal&utm_medium=plugin"
   },
-  "homepage": "https://chopcal.com/mcp-server",
+  "homepage": "https://chopcal.com/mcp-server?utm_source=github-chopcal&utm_medium=plugin",
   "privacyPolicyUrl": "https://chopcal.com/privacy",
   "license": "SEE LICENSE IN ../../LICENSE"
 }

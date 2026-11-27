@@ -28,6 +28,6 @@ Estimate only. Not a substitute for professional guidance.
 - Privacy: https://chopcal.com/privacy
 - Terms: https://chopcal.com/terms
 - Support: https://chopcal.com/support
-- How the connector works: https://chopcal.com/mcp-server
+- How the connector works: https://chopcal.com/mcp-server?utm_source=github-chopcal&utm_medium=plugin
 
 ChopCal is for adults. It is a general nutrition and wellness tool, not a medical device.

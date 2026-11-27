@@ -6,9 +6,9 @@
   "author": {
     "name": "ChopCal",
     "email": "support@chopcal.com",
-    "url": "https://chopcal.com"
+    "url": "https://chopcal.com/?utm_source=github-chopcal&utm_medium=plugin"
   },
-  "homepage": "https://chopcal.com/mcp-server",
+  "homepage": "https://chopcal.com/mcp-server?utm_source=github-chopcal&utm_medium=plugin",
   "license": "SEE LICENSE IN ../../LICENSE",
   "keywords": [
     "calories",
@@ -30,7 +30,7 @@
           "Read food diary",
           "Save a meal"
         ],
-        "websiteURL": "https://chopcal.com",
+        "websiteURL": "https://chopcal.com/?utm_source=github-chopcal&utm_medium=plugin",
         "supportURL": "https://chopcal.com/support",
         "privacyPolicyURL": "https://chopcal.com/privacy",
         "termsOfServiceURL": "https://chopcal.com/terms",
