@@ -1,0 +1,10 @@
+{
+  "name": "@chopcal/calc",
+  "version": "1.0.0",
+  "description": "BMI and daily calorie estimate (Mifflin-St Jeor)",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": { "test": "node --test test/calc.test.ts" },
+  "engines": { "node": ">=22.18" }
+}

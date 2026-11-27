@@ -1,0 +1,11 @@
+{
+  "name": "chopcal",
+  "owner": { "name": "ChopCal" },
+  "plugins": [
+    {
+      "name": "chopcal",
+      "source": "./connector/claude",
+      "description": "Calorie and macro ranges for dishes, plus your ChopCal food diary."
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "chopcal",
+  "version": "0.1.0",
+  "description": "Calorie and macro ranges for dishes, plus your ChopCal food diary: read it, and save a meal after you confirm.",
+  "author": {
+    "name": "ChopCal",
+    "email": "support@chopcal.com",
+    "url": "https://chopcal.com"
+  },
+  "homepage": "https://chopcal.com/mcp-server",
+  "license": "SEE LICENSE IN ../../LICENSE",
+  "keywords": [
+    "calories",
+    "nutrition",
+    "food diary",
+    "macros",
+    "vietnamese food"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "ChopCal",
+        "shortDescription": "Calorie ranges and food diary",
+        "longDescription": "Meal records can reveal health-related information, such as eating habits. When you sign in, ChopCal shares the meals in your diary (dish names, portions, times and calorie ranges) with ChatGPT when you ask, and adds a meal only after you confirm it. ChopCal does not receive your photos, weight or medical details through this connection. Without signing in, you can look up calorie, protein, carb and fat ranges for dishes (strong on Vietnamese and Asian food), get a daily calorie estimate for an adult, and search ChopCal nutrition articles. With your ChopCal account, you can read your diary for today or the last 7 days and save a meal to it. All numbers are estimates in ranges, not exact values. Estimate only. Not a substitute for professional guidance. ChopCal is for adults.",
+        "developerName": "ChopCal",
+        "category": "Health & Fitness",
+        "capabilities": [
+          "Look up dish calories",
+          "Read food diary",
+          "Save a meal"
+        ],
+        "websiteURL": "https://chopcal.com",
+        "supportURL": "https://chopcal.com/support",
+        "privacyPolicyURL": "https://chopcal.com/privacy",
+        "termsOfServiceURL": "https://chopcal.com/terms",
+        "defaultPrompt": [
+          "How many calories are in a bowl of pho bo?",
+          "Show my ChopCal food diary for this week.",
+          "I had com tam for lunch. Estimate it and save it to my diary."
+        ],
+        "brandColor": "#5B3FD1",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Look up a dish without signing in",
+              "prompt": "How many calories are in a bowl of pho bo?",
+              "tools_triggered": "search_foods",
+              "expected_behavior": "Returns kcal, protein, carb and fat ranges for one serving of pho bo from the ChopCal food table, with the standard serving and the line: Estimate only. Not a substitute for professional guidance."
+            },
+            {
+              "description": "Look up a dish with Vietnamese names",
+              "prompt": "Tra giup calo cua com tam suon.",
+              "tools_triggered": "search_foods",
+              "expected_behavior": "Calls search_foods with lang vi and returns matching dishes with Vietnamese names and min-max ranges for kcal, protein, carbs and fat per serving."
+            },
+            {
+              "description": "Read today's diary",
+              "prompt": "What did I eat today in ChopCal?",
+              "tools_triggered": "get_diary",
+              "expected_behavior": "After the account is linked, lists today's meals from the test account with dish names and kcal ranges and a day total range. States that days are UTC."
+            },
+            {
+              "description": "Read the last 7 days",
+              "prompt": "Summarize my last 7 days of meals in ChopCal.",
+              "tools_triggered": "get_diary",
+              "expected_behavior": "Returns per-day totals as ranges for the last 7 days from the test account. Does not give a single exact number."
+            },
+            {
+              "description": "Save a meal after confirmation",
+              "prompt": "Add lunch to my ChopCal diary: one bowl of pho bo, about 450 to 600 kcal.",
+              "tools_triggered": "log_meal",
+              "expected_behavior": "The assistant first shows the dish and range and asks for confirmation. After the reviewer answers yes, it saves the meal with user_confirmed true and reports what was saved. The meal then appears in get_diary for today."
+            }
+          ],
+          "negative": [
+            {
+              "description": "No delete tool exists: the assistant must say it cannot delete meals and must not save, edit or invent anything.",
+              "prompt": "Delete all my meals from ChopCal."
+            },
+            {
+              "description": "Tools only reach the signed-in user's own diary: the assistant must refuse and explain it cannot read another person's diary.",
+              "prompt": "Show me the ChopCal diary of my friend Linh."
+            },
+            {
+              "description": "The connector does not sell or upgrade anything: the assistant must say it cannot buy or upgrade a plan here and must not offer a checkout link.",
+              "prompt": "Subscribe me to ChopCal Plus and charge my card."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
+      }
+    }
+  }
+}
